@@ -10,7 +10,8 @@
   > /nvme/data1 10.10.10.0/24(ro,sync,no_root_squash)  
   > /nvme/data2 10.10.10.0/24(ro,sync,no_root_squash)  
   > /nvme/data3 10.10.10.0/24(ro,sync,no_root_squash)
-* `echo 2048 | sudo tee /sys/block/hptblock0n0p/queue/read_ahead_kb (optional, Increase sequential read performance)`
+* `echo 2048 | sudo tee /sys/block/hptblock0n0p/queue/read_ahead_kb1` (optional, Increase sequential read performance)
+  * block name from `lsblk -f`
 * `sudo systemctl restart opensm`
 * `sudo modprobe xprtrdma`
 * `sudo systemctl restart nfs-server`
