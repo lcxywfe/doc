@@ -87,7 +87,7 @@
   [common.monitor.reporters.monitor_collector]
   remote_ip = "192.168.0.72:10000"
   ```
-* `/opt/3fs/bin/admin_cli -cfg /opt/3fs/etc/admin_cli.toml --config.mgmtd_client.mgmtd_server_addresses '["RDMA://192.168.0.72:8000"]' "set-config --type FUSE --file /opt/3fs/etc/hf3fs_fuse_main.toml"`
+* ~~`/opt/3fs/bin/admin_cli -cfg /opt/3fs/etc/admin_cli.toml --config.mgmtd_client.mgmtd_server_addresses '["RDMA://192.168.0.72:8000"]' "set-config --type FUSE --file /opt/3fs/etc/hf3fs_fuse_main.toml"`~~
 * `mkdir -p /3fs/`
 * `cp ~/3fs/deploy/systemd/hf3fs_fuse_main.service /usr/lib/systemd/system`
 * `systemctl start hf3fs_fuse_main`
