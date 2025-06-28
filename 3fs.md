@@ -65,6 +65,7 @@
 
 ### custom
 #### mount dir
+* [install dependencies](https://github.com/deepseek-ai/3FS/blob/main/README.md#install-dependencies)
 * `git clone https://github.com/deepseek-ai/3FS.git`
 * [build 3fs](https://github.com/deepseek-ai/3FS/blob/main/README.md#build-3fs)
 * `mkdir -p /opt/3fs/{bin,etc}`
