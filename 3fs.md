@@ -65,7 +65,7 @@
 
 ### custom
 #### mount dir
-* git clone https://github.com/deepseek-ai/3FS.git
+* `git clone https://github.com/deepseek-ai/3FS.git`
 * [build 3fs](https://github.com/deepseek-ai/3FS/blob/main/README.md#build-3fs)
 * `mkdir -p /opt/3fs/{bin,etc}`
 * `cp ~/3fs/build/bin/hf3fs_fuse_main /opt/3fs/bin`
@@ -90,7 +90,8 @@
 * `mkdir -p /3fs/`
 * `cp ~/3fs/deploy/systemd/hf3fs_fuse_main.service /usr/lib/systemd/system`
 * `systemctl start hf3fs_fuse_main`
+* `df -hT | grep 3fs`
 
 #### python
-* python3 setup.py install
+* `python3 setup.py install`
 * [demo](https://github.com/deepseek-ai/3FS/blob/main/hf3fs_fuse/fuse_demo.py)
