@@ -56,8 +56,34 @@
 * save token
  
 ## client
+### use 3fs docker
 * `docker run -d --network=host --name fuse --shm-size=200g --ulimit memlock=-1 --privileged --device=/dev/infiniband/uverbs0 --device=/dev/infiniband/rdma_cm --env REMOTE_IP="192.168.0.72:10000" --env MGMTD_SERVER_ADDRESSES="RDMA://192.168.0.72:8000" --env TOKEN="AAD+ioV78QDeStEe2wCnbOhW" ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04 ./fuse.sh`
   * `--shm-size`
   * `REMOTE_IP`
   * `MGMTD_SERVER_ADDRESSES`
   * `TOKEN`
+
+### custom
+* build 3fs
+* `mkdir -p /opt/3fs/{bin,etc}`
+* `cp ~/3fs/build/bin/hf3fs_fuse_main /opt/3fs/bin`
+* `cp ~/3fs/configs/{hf3fs_fuse_main_launcher.toml,hf3fs_fuse_main.toml,hf3fs_fuse_main_app.toml} /opt/3fs/etc`
+* save token to `/opt/3fs/etc/token.txt`
+* edit `hf3fs_fuse_main_launcher.toml`
+  ```
+  cluster_id = "stage"
+  mountpoint = '/3fs'
+  token_file = '/opt/3fs/etc/token.txt'
+  [mgmtd_client]
+  mgmtd_server_addresses = ["RDMA://192.168.0.72:8000"]
+  ```
+* edit `hf3fs_fuse_main.toml`
+  ```
+  [mgmtd]
+  mgmtd_server_addresses = ["RDMA://192.168.0.72:8000"]
+  [common.monitor.reporters.monitor_collector]
+  remote_ip = "192.168.0.72:10000"
+  ```
+* `mkdir -p /3fs/`
+* `cp ~/3fs/deploy/systemd/hf3fs_fuse_main.service /usr/lib/systemd/system`
+* `systemctl start hf3fs_fuse_main`
