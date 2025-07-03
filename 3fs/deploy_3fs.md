@@ -53,6 +53,8 @@
   * `REPLICATION_FACTOR`
   * `NUM_DISKS_PER_NODE`
   * `MGMTD_SERVER_ADDRESSES`
+  * `NUM_TARGETS_PER_DISK` default 12
+  * `MIN_TARGETS_PER_DISK` default 12
 * save token
  
 ## client
