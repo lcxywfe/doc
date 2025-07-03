@@ -32,10 +32,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 
 # 3fs
-git clone https://github.com/deepseek-ai/3FS.git
-cd 3FS
-git submodule update --init --recursive
-./patches/apply.sh
+# git clone https://github.com/deepseek-ai/3FS.git
+# cd 3FS
+# git submodule update --init --recursive
+# ./patches/apply.sh
+
+unzip 3FS-ubuntu22.zip && cd 3FS
 
 cmake -S . -B build -DCMAKE_CXX_COMPILER=clang++-19 -DCMAKE_C_COMPILER=clang-19 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build -j $(nproc)
