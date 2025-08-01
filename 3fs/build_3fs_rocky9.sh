@@ -58,6 +58,7 @@ source $HOME/.cargo/env
 
 # 3fs
 sudo dnf install -y git
+sudo dnf install -y unzip
 sudo dnf install -y autoconf
 sudo dnf install -y numactl-devel
 sudo dnf install -y python3-devel
