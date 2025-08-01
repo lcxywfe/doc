@@ -6,7 +6,7 @@ set -e
 
 sudo dnf install -y epel-release
 sudo dnf update -y
-
+sudo dnf install -y wget
 sudo dnf install -y cmake
 sudo dnf install -y lz4-devel
 sudo dnf install -y xz-devel
