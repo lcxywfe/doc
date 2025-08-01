@@ -1,8 +1,8 @@
 #/bin/bash
 
-# REMOTE_IP=192.168.0.72:10000 MGMTD_SERVER_ADDRESSES=RDMA://192.168.0.72:8000 TOKEN="AAD+ioV78QDeStEe2wCnbOhW" ./run.sh
-
 set -e
+
+[ "$(id -u)" -eq 0 ] && dnf install sudo -y
 
 sudo dnf install -y epel-release
 sudo dnf update -y
