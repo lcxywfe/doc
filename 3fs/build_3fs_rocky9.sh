@@ -70,5 +70,5 @@ cd 3FS
 cmake -S . -B build -DCMAKE_CXX_COMPILER=clang++-19 -DCMAKE_C_COMPILER=clang-19 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build -j $(nproc)
 
-sudo python3 setup.py install
+CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) sudo python3 setup.py install
 
