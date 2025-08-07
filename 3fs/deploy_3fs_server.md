@@ -25,10 +25,11 @@
 ## storage node
 ### prepare storage docker
 * `docker pull ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04`
+### if linux kernel version < 5.1
 * `docker run --name 3fs-tmp -it ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04`
   * `vim /opt/3fs/etc/storage_main.toml`
   * set `enable_io_uring = false`
-* `docker commit 3fs-tmp ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04-no-io-uring`
+* `docker commit 3fs-tmp ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04`
 
 ### mount disk
 * `mkfs.xfs -L data0 /dev/nvme0n1`
@@ -38,7 +39,7 @@
 * ...
 
 ### storage
-* `docker run -d --network=host --name storage --ulimit memlock=-1 --privileged -v /nvme0:/nvme0 -v /nvme1:/nvme1 -v /nvme2:/nvme2 -v /nvme3:/nvme3 -v /nvme4:/nvme4 -v /nvme5:/nvme5 -v /nvme6:/nvme6 -v /nvme7:/nvme7 --device=/dev/infiniband/uverbs0 --device=/dev/infiniband/rdma_cm --env STORAGE_NODE_ID=10001 --env TARGET_PATHS="/nvme1","/nvme2","/nvme3","/nvme4","/nvme5","/nvme6","/nvme7" --env REMOTE_IP="192.168.0.72:10000" --env MGMTD_SERVER_ADDRESSES="RDMA://192.168.0.72:8000" ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04-no-io-uring ./storage.sh`
+* `docker run -d --network=host --name storage --ulimit memlock=-1 --privileged -v /nvme0:/nvme0 -v /nvme1:/nvme1 -v /nvme2:/nvme2 -v /nvme3:/nvme3 -v /nvme4:/nvme4 -v /nvme5:/nvme5 -v /nvme6:/nvme6 -v /nvme7:/nvme7 --device=/dev/infiniband/uverbs0 --device=/dev/infiniband/rdma_cm --env STORAGE_NODE_ID=10001 --env TARGET_PATHS="/nvme1","/nvme2","/nvme3","/nvme4","/nvme5","/nvme6","/nvme7" --env REMOTE_IP="192.168.0.72:10000" --env MGMTD_SERVER_ADDRESSES="RDMA://192.168.0.72:8000" ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/3fs:b71ffc55-fdb7.3.63-fuse3.16.2-ubuntu22.04 ./storage.sh`
   * `-v`
   * `TARGET_PATHS`
   * `STORAGE_NODE_ID`
