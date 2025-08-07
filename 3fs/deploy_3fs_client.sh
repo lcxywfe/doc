@@ -21,6 +21,6 @@ sudo sed -i "s|mgmtd_server_addresses = \[\]|mgmtd_server_addresses = [\"${MGMTD
 sudo mkdir -p /3fs/
 sudo mkdir -p /var/log/3fs
 sudo cp 3FS/deploy/systemd/hf3fs_fuse_main.service /usr/lib/systemd/system
-sudo systemctl start hf3fs_fuse_main
-# /opt/3fs/bin/hf3fs_fuse_main --launcher_cfg /opt/3fs/etc/hf3fs_fuse_main_launcher.toml
+sudo systemctl start hf3fs_fuse_main # if on host
+# /opt/3fs/bin/hf3fs_fuse_main --launcher_cfg /opt/3fs/etc/hf3fs_fuse_main_launcher.toml  # if in container
 df -hT | grep 3fs
