@@ -32,6 +32,8 @@ sudo dnf install -y double-conversion-devel
 
 sudo dnf install -y libevent libevent-devel
 
+sudo systemctl restart sshd
+
 # fuse
 sudo dnf install -y meson
 # wget https://github.com/libfuse/libfuse/releases/download/fuse-3.16.1/fuse-3.16.1.tar.gz
