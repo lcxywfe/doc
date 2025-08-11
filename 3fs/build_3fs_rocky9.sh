@@ -21,7 +21,6 @@ sudo dnf install -y clang
 sudo dnf install -y lld
 sudo dnf install -y gperftools-devel
 sudo dnf install -y gperftools
-sudo dnf install -y openssl-devel
 sudo dnf install -y gcc
 sudo dnf install -y gcc-c++
 sudo dnf install -y boost-devel
